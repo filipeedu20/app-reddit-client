@@ -5,6 +5,8 @@ export default (req, res) => {
     query: { tag }
   } = req;
 
+
+  
   res.setHeader("Content-Type", "application/json");
   axios.get(`https://www.reddit.com/r/${tag}.json`).then(({ data }) => {
     res.send(JSON.stringify(data));
