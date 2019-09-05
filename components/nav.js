@@ -11,7 +11,7 @@ const links = [
 
 const Nav = () => (
   <nav>
-    <ul>
+    {/* <ul>
       <li>
         <Link href='/'>
           <a>Home</a>
@@ -22,7 +22,7 @@ const Nav = () => (
           <a href={href}>{label}</a>
         </li>
       ))}
-    </ul>
+    </ul> */}
 
     <style jsx>{`
       :global(body) {
