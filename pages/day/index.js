@@ -1,7 +1,9 @@
 import Link from "next/link";
 const axios = require("axios");
 
-axios.get("https://www.reddit.com/r/javascript.json").then(console.log);
+axios.get("https://www.reddit.com/r/javascript.json").then(
+  // console.log
+  );
 
 
 class App extends React.Component {
@@ -14,6 +16,8 @@ class App extends React.Component {
     getPosts() {
         axios
           .get("https://www.reddit.com/r/javascript.json")
+          
+
           .then(response => {
             this.setState({
               posts: response.data.data.children,
@@ -29,27 +33,23 @@ class App extends React.Component {
     
       render() {
         const { isLoading, posts } = this.state;
+      
         return (
-          <React.Fragment>
-            <h2>Lista Selecionada</h2>
-            <div>
-                
-              {!isLoading ? (
-                posts.map(post => {
-                  const { title , subreddit } = post;
-                  console.log(post);
-                  return (
-                   <div>
-                      <div>{title}</div>
-                      <h2>{subreddit}</h2>
-                    </div>
-                  );
-                })
-              ) : (
-                <p>Carregando...</p>
-              )}
-            </div>
-          </React.Fragment>
+      
+          <div>
+          {!isLoading ? (
+            posts.map(post => {                            
+              return (                
+                <div >
+                  <strong>{post.data.title}</strong>
+                  <hr />
+                </div>
+              );
+            })
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>        
         );
       }
 }
@@ -57,10 +57,7 @@ class App extends React.Component {
 
 export default () => (
   <div>
-    Hello World.{" "}
-    <Link href="/about">
-      <a>Aboutsssss</a>
-    </Link>
+    <h1>Postegens</h1>
     <App></App>
   </div>
 );
